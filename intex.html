@@ -3,161 +3,714 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Металлообработка в Нижнем Новгороде | Изготовление деталей </title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <title>Hambro - Металлообработка и металлоконструкции</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* Стили можно писать прямо здесь, чтобы не создавать отдельный файл */
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --primary: #2c3e50;
+            --secondary: #e74c3c;
+            --accent: #3498db;
+            --light: #ecf0f1;
+            --dark: #2c3e50;
+            --gray: #7f8c8d;
+        }
+
         body {
-            font-family: 'Inter', sans-serif;
-            line-height: 1.6;
             color: #333;
-            background-color: #f8f9fa;
-            padding: 20 px;
-            max-width: 1000 px;
+            line-height: 1.6;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
             margin: 0 auto;
+            padding: 0 20px;
         }
+
+        /* Header */
         header {
-            background: linear-gradient (135 deg, #6a11cb 0 %, #2575fc 100 %);
+            background-color: var(--primary);
             color: white;
-            padding: 40 px 30 px;
-            border-radius: 12 px;
-            margin-bottom: 30 px;
+            padding: 15px 0;
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo-icon {
+            color: var(--secondary);
+            font-size: 28px;
+        }
+
+        .logo-text {
+            font-size: 24px;
+            font-weight: 700;
+        }
+
+        .logo-text span {
+            color: var(--secondary);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--secondary);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 180px 0 100px;
             text-align: center;
-            box-shadow: 0 5 px 15 px rgba (0,0,0,0.1);
         }
-        h1 { font-size: 2.8 rem; margin-bottom: 10 px; font-weight: 600; }
-        .subtitle {
-            font-size: 1.2 rem;
-            opacity: 0.9;
-            margin-bottom: 20 px;
+
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 5px rgba(0,0,0,0.5);
         }
-        .contact-links a {
+
+        .hero p {
+            font-size: 20px;
+            max-width: 800px;
+            margin: 0 auto 30px;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--secondary);
             color: white;
-            margin: 0 15 px;
-            font-size: 1.5 rem;
-            transition: opacity 0.3 s;
+            padding: 15px 30px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 18px;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
         }
-        .contact-links a:hover { opacity: 0.8; }
-        section {
-            background: white;
-            padding: 30 px;
-            border-radius: 12 px;
-            margin-bottom: 25 px;
-            box-shadow: 0 3 px 10 px rgba (0,0,0,0.05);
+
+        .btn:hover {
+            background-color: #c0392b;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
         }
-        h2 {
-            color: #2d3436;
-            border-bottom: 3 px solid #6a11cb;
-            padding-bottom: 10 px;
-            margin-bottom: 20 px;
-            font-size: 1.8 rem;
+
+        /* Services */
+        .section {
+            padding: 100px 0;
         }
-        h3 { color: #2575fc; margin-top: 20 px; font-size: 1.3 rem; }
-        ul { padding-left: 20 px; }
-        li { margin-bottom: 8 px; }
-        .skills-grid {
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-title h2 {
+            font-size: 36px;
+            color: var(--primary);
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title h2:after {
+            content: '';
+            position: absolute;
+            width: 70px;
+            height: 3px;
+            background-color: var(--secondary);
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .services-grid {
             display: grid;
-            grid-template-columns: repeat (auto-fill, minmax (250 px, 1 fr));
-            gap: 15 px;
-            margin-top: 15 px;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
         }
-        .skill-category {
-            background: #f1f3f4;
-            padding: 15 px;
-            border-radius: 8 px;
-        }
-        .skill-category h4 { margin-bottom: 10 px; color: #444; }
-        footer {
+
+        .service-card {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
             text-align: center;
-            margin-top: 40 px;
-            color: #777;
-            font-size: 0.9 rem;
-            padding: 20 px;
+            padding: 30px 20px;
         }
-        @ media (max-width: 768 px) {
-            body { padding: 15 px; }
-            h1 { font-size: 2.2 rem; }
-            .skills-grid { grid-template-columns: 1 fr; }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+
+        .service-icon {
+            font-size: 48px;
+            color: var(--secondary);
+            margin-bottom: 20px;
+        }
+
+        .service-card h3 {
+            font-size: 22px;
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+
+        /* About */
+        .about {
+            background-color: #f9f9f9;
+        }
+
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+
+        .about-text {
+            flex: 1;
+        }
+
+        .about-text h3 {
+            font-size: 28px;
+            margin-bottom: 20px;
+            color: var(--primary);
+        }
+
+        .about-image {
+            flex: 1;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Portfolio */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        .portfolio-item {
+            border-radius: 8px;
+            overflow: hidden;
+            position: relative;
+            height: 250px;
+        }
+
+        .portfolio-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .portfolio-item:hover img {
+            transform: scale(1.05);
+        }
+
+        .portfolio-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0,0,0,0.8));
+            color: white;
+            padding: 20px;
+            transform: translateY(100%);
+            transition: transform 0.3s;
+        }
+
+        .portfolio-item:hover .portfolio-overlay {
+            transform: translateY(0);
+        }
+
+        /* Contact */
+        .contact {
+            background-color: var(--primary);
+            color: white;
+        }
+
+        .contact .section-title h2 {
+            color: white;
+        }
+
+        .contact-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 50px;
+        }
+
+        .contact-info h3 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .contact-icon {
+            background-color: var(--secondary);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            font-size: 18px;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            border: none;
+            background-color: rgba(255,255,255,0.9);
+        }
+
+        .contact-form textarea {
+            height: 150px;
+            resize: vertical;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #1a252f;
+            color: #bbb;
+            padding: 50px 0 20px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 15px;
+        }
+
+        .footer-logo span {
+            color: var(--secondary);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #34495e;
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .about-content {
+                flex-direction: column;
+            }
+            
+            .hero h1 {
+                font-size: 36px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                right: 0;
+                background-color: var(--primary);
+                flex-direction: column;
+                padding: 20px;
+                text-align: center;
+                box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+            }
+            
+            .nav-links.active {
+                display: flex;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .hero {
+                padding: 150px 0 80px;
+            }
+            
+            .section {
+                padding: 70px 0;
+            }
         }
     </style>
 </head>
 <body>
+    <!-- Header -->
     <header>
-        <!-- Фото (центрированное) -->
-    <div style="text-align: center; margin-bottom: 25 px;">
-        <img src="photo_2026-01-18_19-48-43.jpg" 
-             alt="Фото" 
-             style="width: 180 px; height: 180 px; border-radius: 50 %; object-fit: cover; border: 4 px solid white; box-shadow: 0 5 px 15 px rgba (0,0,0,0.2);">
-    </div>
-        <h1>Металлообработка</h1>
-        <p class="subtitle">Изготовление деталей на заказ | Токарные и фрезерные работы</p>
-        <p class="subtitle">Нижний Новгород</p>
-        <div class="contact-links">
-            <a href="mailto:anna_karmanov_a@mail.ru" title="Email"><i class="fas fa-envelope"></i></a>
-            <a href="tel:+79049573033" title="Позвонить"><i class="fas fa-phone"></i></a>
-            <!-- Вставьте свою ссылку на резюме на Google Диске -->
-            <a href="https://docs.google.com/document/d/1uX_kJdLdVU0y03Fhs_BGb6AfFXmyDRSW/edit?usp=sharing&ouid=108372206242509561925&rtpof=true&sd=true"="Скачать резюме (PDF)"><i class="fas fa-file-pdf"></i></a>
+        <div class="container header-container">
+            <div class="logo">
+                <div class="logo-icon">
+                    <i class="fas fa-industry"></i>
+                </div>
+                <div class="logo-text">HAM<span>BRO</span></div>
+            </div>
+            
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <nav class="nav-links" id="navLinks">
+                <a href="#home">Главная</a>
+                <a href="#services">Услуги</a>
+                <a href="#about">О компании</a>
+                <a href="#portfolio">Портфолио</a>
+                <a href="#contact">Контакты</a>
+            </nav>
         </div>
     </header>
 
-    <section id="about">
-        <h2>Обо мне</h2>
-        <p>Студентка 3-го курса НРУ им. Кулибина по специальности "Информационные системы и программирование". Ищу первую возможность применить теоретические знания на практике в роли специалиста технической поддержки. Обладаю развитыми коммуникативными навыками благодаря опыту работы в клиентском сервисе. Быстро обучаюсь, ответственна и нацелена на результат.</p>
-        <h2>Навыки</h2>
-            <div class="skill-category">
-                <h4>Технические</h4>
-                <ul>
-                    <li>Основы C#</li>
-                    <li>Базовое администрирование 1С</li>
-                    <li>HTML, CSS (базовый уровень)</li>
-                    <li>MS Office / Google Docs</li>
-                </ul>
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <h1>Профессиональная металлообработка</h1>
+            <p>Полный спектр услуг по обработке металла: от проектирования до изготовления металлоконструкций любой сложности. Качество, точность и сроки - наши главные приоритеты.</p>
+            <a href="#contact" class="btn">Заказать консультацию</a>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="section" id="services">
+        <div class="container">
+            <div class="section-title">
+                <h2>Наши услуги</h2>
+                <p>Мы предоставляем полный цикл услуг по металлообработке</p>
             </div>
-            <div class="skill-category">
-                <h4>Профессиональные</h4>
-                <ul>
-                    <li>Поддержка пользователей</li>
-                    <li>Решение проблем</li>
-                    <li>Работа в команде</li>
-                    <li>Коммуникация</li>
-                </ul>
-            </div>
-            <div class="skill-category">
-                <h4>Языки</h4>
-                <ul>
-                    <li>Русский (родной)</li>
-                    <li>Английский (A1, Beginner)</li>
-                </ul>
+            
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-cut"></i>
+                    </div>
+                    <h3>Лазерная резка</h3>
+                    <p>Высокоточная резка металла любой сложности с помощью современного лазерного оборудования.</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-cogs"></i>
+                    </div>
+                    <h3>Фрезерная обработка</h3>
+                    <p>Обработка металлических деталей на фрезерных станках с ЧПУ для получения сложных форм.</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                    <i class="fas fa-bolt"></i>
+                    </div>
+                    <h3>Сварка металлоконструкций</h3>
+                    <p>Профессиональная сварка металлоконструкций любой сложности с гарантией качества.</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-hammer"></i>
+                    </div>
+                    <h3>Изготовление металлоизделий</h3>
+                    <p>Производство металлических изделий по индивидуальным чертежам и требованиям заказчика.</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-paint-roller"></i>
+                    </div>
+                    <h3>Покраска и обработка</h3>
+                    <p>Нанесение защитных покрытий, покраска, пескоструйная обработка металлических поверхностей.</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-drafting-compass"></i>
+                    </div>
+                    <h3>Проектирование</h3>
+                    <p>Разработка чертежей и 3D-моделей металлоконструкций с учетом всех технических требований.</p>
+                </div>
             </div>
         </div>
     </section>
 
-    <section id="experience">
-        <h2>Опыт работы</h2>
-        <h3>Официант | Сыроварня (ресторан), Нижний Новгород</h3>
-        <p><em>Октябрь 2024 — Август 2025</em></p>
-        <ul>
-            <li>Консультирование гостей, работа с запросами и решением нестандартных ситуаций.</li>
-            <li>Развитие стрессоустойчивости и навыков работы в высоконагруженной среде.</li>
-            <li>Получение положительных отзывов за внимательное обслуживание.</li>
-        </ul>
+    <!-- About Section -->
+    <section class="section about" id="about">
+        <div class="container">
+            <div class="section-title">
+                <h2>О компании Hambro</h2>
+                <p>Наш опыт и технологии для вашего успеха</p>
+            </div>
+            
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>Более 15 лет на рынке металлообработки</h3>
+                    <p>Компания Hambro специализируется на обработке металла и производстве металлоконструкций с 2008 года. За это время мы реализовали сотни проектов для предприятий различных отраслей промышленности.</p>
+                    <p>Наше производство оснащено современным оборудованием от ведущих мировых производителей, что позволяет выполнять заказы любой сложности с высочайшей точностью.</p>
+                    <p>Мы гордимся своей репутацией надежного партнера, который всегда соблюдает сроки и гарантирует качество своей продукции.</p>
+                    <br>
+                    <a href="#contact" class="btn">Связаться с нами</a>
+                </div>
+                
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Производство Hambro">
+                </div>
+            </div>
+        </div>
     </section>
 
-    <section id="education">
-        <h2>Образование</h2>
-        <h3>НРУ им. Кулибина</h3>
-        <p><strong>Специальность:</strong> Информационные системы и программирование</p>
-        <p><strong>Статус:</strong> Студентка 3 курса (окончание в 2027 г.)</p>
-        <p><strong>Изучаемые дисциплины:</strong> Основы программирования (C#), Базы данных, Web-технологии, Сетевые технологии.</p>
+    <!-- Portfolio Section -->
+    <section class="section" id="portfolio">
+        <div class="container">
+            <div class="section-title">
+                <h2>Наши работы</h2>
+                <p>Примеры выполненных проектов</p>
+            </div>
+            
+            <div class="portfolio-grid">
+                <div class="portfolio-item">
+                    <img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Металлоконструкции">
+                    <div class="portfolio-overlay">
+                        <h3>Промышленные металлоконструкции</h3>
+                    </div>
+                </div>
+                
+                <div class="portfolio-item">
+                    <img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Декоративные изделия">
+                    <div class="portfolio-overlay">
+                        <h3>Декоративные металлические изделия</h3>
+                    </div>
+                </div>
+                
+                <div class="portfolio-item">
+                    <img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Детали для оборудования">
+                    <div class="portfolio-overlay">
+                        <h3>Точные детали для оборудования</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
 
+    <!-- Contact Section -->
+    <section class="section contact" id="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2>Контакты</h2>
+                <p>Свяжитесь с нами для обсуждения вашего проекта</p>
+            </div>
+            
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h3>Контактная информация</h3>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div>
+                            <h4>Адрес</h4>
+                            <p>г. Москва, ул. Промышленная, 15</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div>
+                            <h4>Телефон</h4>
+                            <p>+7 (495) 123-45-67</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div>
+                            <h4>Email</h4>
+                            <p>info@hambro-metal.ru</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div>
+                            <h4>Режим работы</h4>
+                            <p>Пн-Пт: 9:00 - 18:00</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="contact-form">
+                    <h3>Оставьте заявку</h3>
+                    <form id="contactForm">
+                        <input type="text" placeholder="Ваше имя" required>
+                        <input type="tel" placeholder="Ваш телефон" required>
+                        <input type="email" placeholder="Ваш email" required>
+                        <textarea placeholder="Сообщение или описание проекта"></textarea>
+                        <button type="submit" class="btn">Отправить заявку</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
     <footer>
-        <p>© 2025 Анна Карманова. Это сайт-визитка, созданный в учебных целях.</p>
-        <p>Свяжитесь со мной: <a href="mailto:anna_karmanov_a@mail.ru">anna_karmanov_a@mail.ru</a> | +7 (904) 957-30-33</p>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-about">
+                    <div class="footer-logo">HAM<span>BRO</span></div>
+                    <p>Профессиональная металлообработка и производство металлоконструкций с 2008 года. Качество, надежность, точность.</p>
+                </div>
+                
+                <div class="footer-services">
+                    <h4>Услуги</h4>
+                    <ul>
+                        <li>Лазерная резка металла</li>
+                        <li>Фрезерные работы</li>
+                        <li>Сварка металлоконструкций</li>
+                        <li>Изготовление металлоизделий</li>
+                    </ul>
+                </div>
+                
+                <div class="footer-contact">
+                    <h4>Контакты</h4>
+                    <p><i class="fas fa-map-marker-alt"></i> г. Москва, ул. Промышленная, 15</p>
+                    <p><i class="fas fa-phone"></i> +7 (495) 123-45-67</p>
+                    <p><i class="fas fa-envelope"></i> info@hambro-metal.ru</p>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 Hambro. Все права защищены.</p>
+            </div>
+        </div>
     </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const navLinks = document.getElementById('navLinks');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            mobileMenuBtn.innerHTML = navLinks.classList.contains('active') 
+                ? '<i class="fas fa-times"></i>' 
+                : '<i class="fas fa-bars"></i>';
+        });
+        
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+            });
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Contact form submission
+        const contactForm = document.getElementById('contactForm');
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Спасибо за вашу заявку! Мы свяжемся с вами в ближайшее время.');
+            this.reset();
+        });
+        
+        // Sticky header
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if(window.scrollY > 100) {
+                header.style.padding = '10px 0';
+            } else {
+                header.style.padding = '15px 0';
+            }
+        });
+    </script>
 </body>
 </html>
+                        
